@@ -1,5 +1,7 @@
 #include <GL/glut.h>
 
+
+/*
 // **************   Complementos a dibujar ***************
 
 void dibujarQuads() {
@@ -152,3 +154,6 @@ int main(int argc, char* argv[]) {
 
 	return 0;
 }
+
+
+*/
