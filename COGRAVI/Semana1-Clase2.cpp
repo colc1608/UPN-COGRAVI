@@ -71,24 +71,26 @@ void dibujarTriangles() {
 
 void dibujarLineas() {
 
-	glLineWidth(10);
+	
+	glLineWidth(10); // GROSOR DE LA LINEA
 	glBegin(GL_LINES);
-	glColor3ub(255, 255, 0);
-	glVertex2d(2, 8);
-	glVertex2d(7, 1);
-
-	glColor3ub(255, 0, 0);
-	glVertex2d(7, 8);
-	glVertex2d(2, 1);
-
+		// LINEA 1	
+		glColor3ub(255, 255, 0);
+		glVertex2d(2, 8);
+		glVertex2d(7, 1);
+		//LINEA 2
+		glColor3ub(255, 0, 0);
+		glVertex2d(7, 8);
+		glVertex2d(2, 1);
 	glEnd();
 
-	glLineWidth(2);
+	
+	glLineWidth(2); // GROSOR DE LA LINEA
 	glBegin(GL_LINES);
-	glColor3ub(255, 255, 255);
-	glVertex2d(5, 6);
-	glVertex2d(5, 4);
-
+	// LINEA 3
+		glColor3ub(255, 255, 255);
+		glVertex2d(5, 6);
+		glVertex2d(5, 4);
 	glEnd();
 
 }
@@ -130,7 +132,7 @@ void configuracionInicial() {
 void dibujar() {
 	configuracionInicial();
 
-	//dibujarLineas();
+	dibujarLineas();
 	//dibujarLineStrip();
 	//dibujaLineLoop();
 
@@ -138,7 +140,7 @@ void dibujar() {
 	//dibujarPoligono1();
 	//dibujarPoligono2();
 	//dibujarPoligono3();
-	dibujarTriangles();
+	//dibujarTriangles();
 
 	glFlush();
 }

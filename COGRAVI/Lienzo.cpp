@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 
 /*
+
 void configuracionInicial() {
 	glLoadIdentity();
 	gluOrtho2D(0, 10, 0, 10);
@@ -32,4 +33,5 @@ int main(int argc, char* argv[]) {
 
 	return 0;
 }
+
 */

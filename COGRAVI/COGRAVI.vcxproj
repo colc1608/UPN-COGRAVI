@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="COLC-Semana1.cpp" />
     <ClCompile Include="Lienzo.cpp" />
     <ClCompile Include="Semana1-Clase1.cpp" />
     <ClCompile Include="Semana1-Clase2.cpp" />

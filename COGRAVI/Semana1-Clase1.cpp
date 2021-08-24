@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 
 
+/*
 void dibujarPuntos() {
 
 	glPointSize(10);
@@ -53,3 +54,5 @@ int main(int argc, char* argv[]) {
 
 	return 0;
 }
+
+*/
