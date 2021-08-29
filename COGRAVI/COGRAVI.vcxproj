@@ -139,10 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="COLC-Semana1.cpp" />
+    <ClCompile Include="ExamenT1-Goku.cpp" />
+    <ClCompile Include="Semana1-TrabajoCampo.cpp" />
+    <ClCompile Include="ExamenT1-Dragon.cpp" />
     <ClCompile Include="Lienzo.cpp" />
     <ClCompile Include="Semana1-Clase1.cpp" />
     <ClCompile Include="Semana1-Clase2.cpp" />
+    <ClCompile Include="Semana2-Clase1-Velero.cpp" />
+    <ClCompile Include="Semana2-Clase1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -24,7 +24,19 @@
     <ClCompile Include="Lienzo.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="COLC-Semana1.cpp">
+    <ClCompile Include="Semana1-TrabajoCampo.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamenT1-Dragon.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Semana2-Clase1-Velero.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Semana2-Clase1.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamenT1-Goku.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
