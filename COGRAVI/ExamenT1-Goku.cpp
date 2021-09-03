@@ -2,6 +2,7 @@
 #include <math.h>
 #include <time.h>
 
+/* 
 void colorCola() {
 	glColor3ub(108, 36, 12);
 }
@@ -4273,10 +4274,10 @@ int main(int argc, char* argv[]) {
 	glutInitWindowPosition(800, 50); // POSICION VENTANA
 	glutInitWindowSize(600, 950); // ANCHO Y ALTO 
 	glutCreateWindow("Goku");
-	//glutInitWindowSize(1440, 2280); // ANCHO Y ALTO
 	glutDisplayFunc(dibujar);
 	glutMainLoop();
 
 	return 0;
 }
 
+*/ 

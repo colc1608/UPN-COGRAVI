@@ -21,7 +21,7 @@
     <ClCompile Include="Semana1-Clase2.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Lienzo.cpp">
+    <ClCompile Include="Lienzo2D.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Semana1-TrabajoCampo.cpp">
@@ -37,6 +37,18 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="ExamenT1-Goku.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Semana3-Clase1.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Lienzo3D.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Semana3-Clase1-Practica.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Lienzo3D_v2.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
