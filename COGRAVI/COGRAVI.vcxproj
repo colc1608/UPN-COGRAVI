@@ -139,18 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ejemplo3D_1.cpp" />
+    <ClCompile Include="Ejemplo3D_2.cpp" />
+    <ClCompile Include="Ejemplo3D_3.cpp" />
     <ClCompile Include="ExamenT1-Goku.cpp" />
-    <ClCompile Include="Lienzo3D.cpp" />
+    <ClCompile Include="ExamenT2-Algo.cpp" />
+    <ClCompile Include="Lienzo3D_v1.cpp" />
     <ClCompile Include="Lienzo3D_v2.cpp" />
-    <ClCompile Include="Semana1-TrabajoCampo.cpp" />
+    <ClCompile Include="Semana1-2D-Castillo.cpp" />
     <ClCompile Include="ExamenT1-Dragon.cpp" />
     <ClCompile Include="Lienzo2D.cpp" />
-    <ClCompile Include="Semana1-Clase1.cpp" />
-    <ClCompile Include="Semana1-Clase2.cpp" />
-    <ClCompile Include="Semana2-Clase1-Velero.cpp" />
-    <ClCompile Include="Semana2-Clase1.cpp" />
-    <ClCompile Include="Semana3-Clase1-Practica.cpp" />
-    <ClCompile Include="Semana3-Clase1.cpp" />
+    <ClCompile Include="Semana1-2D-BasicoAndPuntos.cpp" />
+    <ClCompile Include="Semana1-2D-LineasPrimitivas.cpp" />
+    <ClCompile Include="Semana2-2D-Velero.cpp" />
+    <ClCompile Include="Semana2-2D-CirculoTransparencia.cpp" />
+    <ClCompile Include="Semana3-3D-FigurasPrimitiva.cpp" />
+    <ClCompile Include="Semana3-3D-PisoAndLuces.cpp" />
+    <ClCompile Include="Semana3-3D-Personaje.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

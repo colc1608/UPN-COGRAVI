@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include <iostream>
 
+/* 
 using namespace std;
 
 float camaraX = -20;
@@ -158,3 +159,5 @@ int main(int argc, char* argv[]) {
 	glutMainLoop();
 	return 0;
 }
+
+*/
