@@ -63,7 +63,13 @@
     <ClCompile Include="Semana3-3D-PisoAndLuces.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ExamenT2-Algo.cpp">
+    <ClCompile Include="ExamenT2-Bandicoot.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Semana4-3D-Casita.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Semana5-3D-Jueves.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

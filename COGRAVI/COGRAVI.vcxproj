@@ -143,7 +143,7 @@
     <ClCompile Include="Ejemplo3D_2.cpp" />
     <ClCompile Include="Ejemplo3D_3.cpp" />
     <ClCompile Include="ExamenT1-Goku.cpp" />
-    <ClCompile Include="ExamenT2-Algo.cpp" />
+    <ClCompile Include="ExamenT2-Bandicoot.cpp" />
     <ClCompile Include="Lienzo3D_v1.cpp" />
     <ClCompile Include="Lienzo3D_v2.cpp" />
     <ClCompile Include="Semana1-2D-Castillo.cpp" />
@@ -156,6 +156,8 @@
     <ClCompile Include="Semana3-3D-FigurasPrimitiva.cpp" />
     <ClCompile Include="Semana3-3D-PisoAndLuces.cpp" />
     <ClCompile Include="Semana3-3D-Personaje.cpp" />
+    <ClCompile Include="Semana4-3D-Casita.cpp" />
+    <ClCompile Include="Semana5-3D-Jueves.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
