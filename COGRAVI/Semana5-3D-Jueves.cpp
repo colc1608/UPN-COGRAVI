@@ -7,7 +7,7 @@ using namespace std;
 
 float camaraX = -20;
 float camaraY = 15;
-float camaraZ = 30;
+float camaraZ = 50;
 
 float posLuzX = 0;
 float posLuzY = 70;
@@ -41,6 +41,8 @@ void loadTextureFromFile(const char* filename, int index) {
 
 void cargarImagenes() {
 	loadTextureFromFile("texturas/cuadros1.bmp", 0);
+	loadTextureFromFile("texturas/goku-24bmp.bmp", 1);
+	loadTextureFromFile("texturas/ladrillo24.bmp", 2);
 }
 
 void iniciarVentana(int w, int h) {
@@ -158,11 +160,147 @@ void cuadro() {
 
 }
 
+void goku() {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[1]);
+
+
+	float tamanioX = 50;
+	float tamanioZ = 56;
+
+	glPushMatrix();
+		glColor3ub(255, 255, 255);
+		glTranslated(0, 2, 0);
+
+		glBegin(GL_QUADS);
+			glTexCoord2d(0, 1); glVertex3d(-tamanioX, 0, -tamanioZ);
+			glTexCoord2d(1, 1);  glVertex3d(tamanioX, 0, -tamanioZ);
+
+			glTexCoord2d(1, 0); glVertex3d(tamanioX, 0, 0);
+			glTexCoord2d(0, 0); glVertex3d(-tamanioX, 0, 0);
+		glEnd();
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+
+}
+
+void goku2() {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[1]);
+
+
+	float tamanioX = 50;
+	float tamanioZ = 56;
+
+	glPushMatrix();
+		glColor3ub(255, 255, 255);
+		glTranslated(0, 2, 56);
+
+		glBegin(GL_QUADS);
+			glTexCoord2d(1, 1); glVertex3d(-tamanioX, 0, -tamanioZ);
+			glTexCoord2d(0, 1);  glVertex3d(tamanioX, 0, -tamanioZ);
+
+			glTexCoord2d(0, 0); glVertex3d(tamanioX, 0, 0);
+			glTexCoord2d(1, 0); glVertex3d(-tamanioX, 0, 0);
+		glEnd();
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+
+}
+
+void pared() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[2]);
+
+	glPushMatrix();
+		glColor3ub(255, 255 ,255);
+		//glTranslated(0, 0, 50);
+		glBegin(GL_QUADS);
+			glTexCoord2d(0, 0); glVertex3d(-50, 0, -50);
+			glTexCoord2d(5, 0); glVertex3d(50, 0, -50);
+			glTexCoord2d(5, 0.5); glVertex3d(50, 10, -50);
+			glTexCoord2d(0, 0.5); glVertex3d(-50, 10, -50);
+
+		glEnd();
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void pared2() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[2]);
+
+	glPushMatrix();
+		glColor3ub(255, 255 ,255);
+		glRotated(90,0,1,0);
+		glBegin(GL_QUADS);
+			glTexCoord2d(0, 0); glVertex3d(-50, 0, -50);
+			glTexCoord2d(5, 0); glVertex3d(50, 0, -50);
+			glTexCoord2d(5, 0.5); glVertex3d(50, 10, -50);
+			glTexCoord2d(0, 0.5); glVertex3d(-50, 10, -50);
+
+		glEnd();
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void pared3() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[2]);
+
+	glPushMatrix();
+		glColor3ub(255, 255 ,255);
+		glTranslated(100,0,0);
+		glRotated(90, 0, 1, 0);
+		glBegin(GL_QUADS);
+			glTexCoord2d(0, 0); glVertex3d(-50, 0, -50);
+			glTexCoord2d(5, 0); glVertex3d(50, 0, -50);
+			glTexCoord2d(5, 0.5); glVertex3d(50, 10, -50);
+			glTexCoord2d(0, 0.5); glVertex3d(-50, 10, -50);
+
+		glEnd();
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+
+void pared4() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[2]);
+
+	glPushMatrix();
+		glColor3ub(255, 255 ,255);
+		glTranslated(0,0, 100);
+		//glRotated(90, 0, 1, 0);
+		glBegin(GL_QUADS);
+			glTexCoord2d(0, 0); glVertex3d(-50, 0, -50);
+			glTexCoord2d(5, 0); glVertex3d(50, 0, -50);
+			glTexCoord2d(5, 0.5); glVertex3d(50, 10, -50);
+			glTexCoord2d(0, 0.5); glVertex3d(-50, 10, -50);
+
+		glEnd();
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+}
+
 void personaje() {
 
 
 	cuadro();
-
+	goku();
+	goku2();
+	pared();
+	pared2();
+	pared3();
+	pared4();
 }
 
 // FIN DIBUJO 
@@ -192,10 +330,10 @@ void teclado_especial(int tecla, int x, int y) {
 	switch (tecla)
 	{
 	case 101:
-		camaraY += 0.3;
+		camaraY += 0.5;
 		break;
 	case 103:
-		camaraY -= 0.3;
+		camaraY -= 0.5;
 		break;
 
 	case 100:
