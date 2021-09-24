@@ -176,7 +176,7 @@ void goku() {
 
 	glPushMatrix();
 		glColor3ub(255, 255, 255);
-		glTranslated(0, 2, 0);
+		glTranslated(0, -5, 0);
 
 		glBegin(GL_QUADS);
 			glTexCoord2d(0, 1); glVertex3d(-tamanioX, 0, -tamanioZ);
@@ -202,7 +202,7 @@ void goku2() {
 
 	glPushMatrix();
 		glColor3ub(255, 255, 255);
-		glTranslated(0, 2, 56);
+		glTranslated(0, -5, 56);
 
 		glBegin(GL_QUADS);
 			glTexCoord2d(1, 1); glVertex3d(-tamanioX, 0, -tamanioZ);
@@ -326,18 +326,30 @@ void paisaje() {
 	glDisable(GL_TEXTURE_2D);
 }
 
+float anguloTierra = 0;
+
+
 void tierra() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture[4] );
 
 	glPushMatrix();
-		glColor3ub(255, 255, 255);
-		glTranslated(0, 10, 0);
-		glRotated(-90, 1, 0, 0);
-		GLUquadric* quad = gluNewQuadric();
-		gluQuadricTexture(quad, 1);
+		anguloTierra += 0.5;
+		
+		glTranslated(20, 0, 0);
+		glRotated(anguloTierra, 0, 1, 0);
+		glTranslated(20, 0, 0);
 
-		gluSphere(quad, 3, 50, 50);
+		glPushMatrix();
+			glColor3ub(255, 255, 255);
+			glTranslated(0, 10, 0);
+			glRotated(-90, 1, 0, 0);
+			GLUquadric* quad = gluNewQuadric();
+			gluQuadricTexture(quad, 1);
+
+			gluSphere(quad, 3, 50, 50);
+
+		glPopMatrix();
 
 	glPopMatrix();
 
@@ -425,6 +437,243 @@ void cubo3() {
 	glPopMatrix();
 }
 
+
+// helicoptero
+
+float giroHelice = 0;
+float velHelice = 0.4;
+
+float alturaHelicoptero = 0;
+float movHelicoptero = 0;
+
+
+
+
+void cuerpo() {
+	glPushMatrix();
+		glTranslated(0, 10, 0);
+		glColor3ub(0, 0, 255);
+		glScaled(1, 1, 1.3);
+		glutWireSphere(10, 20, 20);
+	glPopMatrix();
+
+}
+
+void trenAtterrizaje(float pos) {
+
+	glPushMatrix();
+
+		glColor3ub(100, 100, 100);
+
+		glTranslated(pos, -3, -10);
+
+		gluCylinder(gluNewQuadric(), 1, 1, 20, 30, 30);
+
+	glPopMatrix();
+
+	glPushMatrix();
+
+		glColor3ub(220,83,0);
+
+		glTranslated(pos, -3, 10);
+
+		gluSphere(gluNewQuadric(), 1, 100, 100);
+
+	glPopMatrix();
+
+	glPushMatrix();
+
+		glColor3ub(220,83,0);
+
+		glTranslated(pos, -3, -10);
+
+		gluSphere(gluNewQuadric(), 1, 100, 100);
+
+	glPopMatrix();
+
+}
+
+void unionTren(float posX, float giro, float posZ) {
+	glPushMatrix();
+		glColor3ub(100, 100, 100);
+		glTranslated(posX, 2.5, posZ);
+		glRotated(90, 0, 1, 0);
+		glRotated(giro, 1, 0, 0);
+		gluCylinder(gluNewQuadric(), 0.5, 0.7, 7, 30, 30);
+	glPopMatrix();
+
+}
+
+void cola() {
+	glPushMatrix();
+		glColor3ub(0, 0, 255);
+		glTranslated(0, 10, -32);
+		gluCylinder(gluNewQuadric(), 1, 3, 20, 30, 30);
+	glPopMatrix();
+}
+
+void parteCola1() {
+	glPushMatrix();
+		glColor3ub(0, 0, 255);
+		glTranslated(-8, 10, -29);
+		glRotated(90, 0, 1, 0);
+		glScaled(1, 0.5, 1);
+		gluCylinder(gluNewQuadric(), 0.5, 3, 8, 30, 30);
+	glPopMatrix();
+
+}
+
+void parteCola2() {
+	glPushMatrix();
+		glColor3ub(0, 0, 255);
+		glTranslated(0, 18, -29);
+		glRotated(90, 0, 0, 1);
+		glRotated(-90, 0, 1, 0);
+		glScaled(1, 0.5, 1);
+		gluCylinder(gluNewQuadric(), 0.5, 3, 8, 30, 30);
+	glPopMatrix();
+
+}
+
+void helice() {
+
+	if(giroHelice >= 360){
+		giroHelice = 0;
+	}
+
+	cout << giroHelice << " valocidad :" << velHelice << endl;
+
+	giroHelice += velHelice; 
+
+	glPushMatrix();
+
+		glTranslated(0, 21, 0);
+		glRotated(giroHelice, 0, 1, 0);
+
+		glPushMatrix();
+
+			glColor3ub(255,255,0);
+
+			glScaled(25, 0.5, 3);
+
+			glutSolidCube(1);
+
+		glPopMatrix();
+
+		glPushMatrix();
+
+			glColor3ub(255,255,0);
+
+			glRotated(90, 0, 1, 0);
+
+			glScaled(25, 0.5, 3);
+
+			glutSolidCube(1);
+
+		glPopMatrix();
+
+		glPushMatrix();
+
+			glColor3ub(220,83,0);
+
+			glTranslated(0, 0.2, 0);
+
+			glScaled(1.2, 0.7, 1.2);
+
+			gluSphere(gluNewQuadric(), 1, 100, 100);
+
+		glPopMatrix();
+
+		glPushMatrix();
+
+			glColor3ub(220,83,0);
+
+			//glTranslated(0, 0.2, 0);
+
+			glRotated(90, 1, 0, 0);
+
+			gluCylinder(gluNewQuadric(), 1, 1, 1.5, 30, 30);
+
+		glPopMatrix();
+
+	glPopMatrix();
+
+}
+
+void helice2() {
+
+	glPushMatrix();
+
+	glTranslated(2, 14, -29);
+	glRotated(giroHelice, 1, 0 ,0);
+	glRotated(-90, 0, 0, 1);
+
+	glPushMatrix();
+
+	glColor3ub(255, 255, 0);
+
+	glScaled(25, 0.5, 3);
+
+	glutSolidCube(0.5);
+
+	glPopMatrix();
+
+	glPushMatrix();
+
+	glColor3ub(255, 255, 0);
+
+	glRotated(90, 0, 1, 0);
+
+	glScaled(25, 0.5, 3);
+
+	glutSolidCube(0.5);
+
+	glPopMatrix();
+
+	glPushMatrix();
+
+	glColor3ub(220, 83, 0);
+
+	glTranslated(0, 0.2, 0);
+
+	glScaled(1.2, 0.7, 1.2);
+
+	gluSphere(gluNewQuadric(), 0.5, 100, 100);
+
+	glPopMatrix();
+
+	glPushMatrix();
+
+	glColor3ub(220, 83, 0);
+
+	//glTranslated(0, 0.2, 0);
+
+	glRotated(90, 1, 0, 0);
+
+	gluCylinder(gluNewQuadric(), 0.5, 0.5, 1.5, 30, 30);
+
+	glPopMatrix();
+
+	glPopMatrix();
+
+}
+
+void helicoptero() {
+	cuerpo();
+	trenAtterrizaje(-8);
+	trenAtterrizaje(8);
+	unionTren(2.5, 45, 4);
+	unionTren(-2.5, 135, 4);
+	unionTren(2.5, 45, -4);
+	unionTren(-2.5, 135, -4);
+	cola();
+	parteCola1();
+	parteCola2();
+	helice();
+	helice2();
+}
+
+
 void personaje() {
 	//cuadro();
 	goku();
@@ -442,6 +691,14 @@ void personaje() {
 	cubo1();
 	cubo2();
 	cubo3();
+
+
+	glPushMatrix();
+	glTranslated(0, alturaHelicoptero, movHelicoptero);
+		helicoptero();
+	glPopMatrix();
+
+
 }
 
 // FIN DIBUJO 
@@ -458,7 +715,7 @@ void dibujar() {
 	glPushMatrix();
 	glRotated(angulo, 0, 1, 0);
 	dibujarEjes();
-	piso();
+	//piso();
 
 	personaje();
 
@@ -531,6 +788,38 @@ void timerCubo1(int t) {
 	//glutTimerFunc(20, timerCubo1, 0);
 }
 
+void timerMoverHelicoptero(int t) {
+	movHelicoptero += 0.1;
+	glutTimerFunc(20, timerMoverHelicoptero, 0);
+}
+
+
+void timerSubirHelicoptero(int) {
+	alturaHelicoptero += 0.3;
+
+	if (alturaHelicoptero < 10) {
+		glutTimerFunc(20, timerSubirHelicoptero, 0);
+	}
+	else {
+		glutTimerFunc(2000, timerMoverHelicoptero, 0);
+	}
+
+	
+}
+
+
+void timerHelice(int t) {
+	velHelice += 1;
+
+	if (velHelice < 15) {
+		glutTimerFunc(3000, timerHelice, 0);
+	}
+	else {
+		glutTimerFunc(0 , timerSubirHelicoptero, 0);
+	}
+
+	
+}
 
 int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
@@ -544,6 +833,7 @@ int main(int argc, char* argv[]) {
 	//glutKeyboardFunc(teclado);
 	glutSpecialFunc(teclado_especial);
 	glutTimerFunc(0, timer, 0);
+	glutTimerFunc(3000, timerHelice, 0);
 	glutTimerFunc(5000, timerCubo1, 0);
 	glutMainLoop();
 	return 0;
