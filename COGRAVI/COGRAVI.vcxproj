@@ -157,7 +157,7 @@
     <ClCompile Include="Semana3-3D-PisoAndLuces.cpp" />
     <ClCompile Include="Semana3-3D-Personaje.cpp" />
     <ClCompile Include="Semana4-3D-Casita.cpp" />
-    <ClCompile Include="Semana5-3D-Jueves.cpp" />
+    <ClCompile Include="Semana5-3D-Texturas.cpp" />
     <ClCompile Include="texturas\RgbImage.cpp" />
   </ItemGroup>
   <ItemGroup>
