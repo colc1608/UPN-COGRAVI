@@ -2,12 +2,17 @@
 #include <iostream>
 #include "texturas/RgbImage.h"
 
+/*
 
 using namespace std;
 
 float camaraX = -20;
 float camaraY = 15;
 float camaraZ = 40;
+
+float centroX = 0;
+float centroZ = 0;
+float movimientoCamara = 0.5;
 
 float posLuzX = 0;
 float posLuzY = 70;
@@ -144,6 +149,7 @@ void piso() {
 // *************************************************** 
 // INICIO DIBUJO 
 
+
 void cuadro() {
 
 	glEnable(GL_TEXTURE_2D);
@@ -275,6 +281,7 @@ void pared3() {
 	glDisable(GL_TEXTURE_2D);
 }
 
+
 void pared4() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
@@ -295,7 +302,27 @@ void pared4() {
 	glDisable(GL_TEXTURE_2D);
 }
 
-float anguloTierra = 0;
+
+
+// *****************************************************
+// CONSTRUCCION DE MUÑEQUITO
+
+// Variables de animacion del muñeco
+float velocidadMovimiento = 0.9;
+
+float anguloPierna1 = 0;
+float ladoPierna1 = 1;
+
+float anguloPierna2 = 0;
+float ladoPierna2 = -1;
+
+float anguloBrazo1 = 0;
+float ladoBrazo1 = 1;
+
+
+float anguloBrazo2 = 0;
+float ladoBrazo2 = -1;
+
 
 
 void pierna1() {
@@ -333,13 +360,11 @@ void cuerpo() {
 
 }
 
-
-
 void brazo1() {
 
 	glPushMatrix();
 		glColor3ub(34, 177, 76);
-		glTranslated(-1, 4.5, 1);
+		glTranslated(-1.5, 4.5, 1);
 		glRotated(-30, 1, 0, 0);
 		glScaled(1, 4, 1);
 		glutSolidCube(1);
@@ -351,7 +376,7 @@ void brazo2() {
 
 	glPushMatrix();
 		glColor3ub(255, 255, 0);
-		glTranslated(1, 4.5, -1);
+		glTranslated(1.5, 4.5, -1);
 		glRotated(30, 1, 0, 0);
 		glScaled(1, 4, 1);
 		glutSolidCube(1);
@@ -369,6 +394,110 @@ void cabeza() {
 
 void personaje() {
 
+	
+
+
+	// SEMANA 7 
+
+	glTranslated(0, 1, 0);
+
+	glPushMatrix();
+		anguloPierna1 += (velocidadMovimiento * ladoPierna1);
+		
+		if (anguloPierna1 >= 60) {
+			ladoPierna1 = -1;
+		}
+
+		if (anguloPierna1 <= 0) {
+			ladoPierna1 = 1;
+		}
+
+		glTranslated(0,2,0);
+		glRotated(anguloPierna1, 1, 0, 0);
+		glTranslated(0, -2, 0);
+		pierna1();
+	glPopMatrix();
+
+
+
+	glPushMatrix();
+		anguloPierna2 += (velocidadMovimiento * ladoPierna2);
+
+		if (anguloPierna2 <= -60) {
+			ladoPierna2 = 1;
+		}
+
+		if (anguloPierna2 >= 0) {
+			ladoPierna2 = -1;
+		}
+		
+		glTranslated(0, 2, 0);
+		glRotated(anguloPierna2, 1, 0, 0);
+		glTranslated(0, -2, 0);
+		pierna2();
+	glPopMatrix();
+
+
+
+
+	glPushMatrix();
+		cuerpo();
+	glPopMatrix();
+
+
+
+	glPushMatrix();
+		anguloBrazo1 += (velocidadMovimiento * ladoBrazo1);
+		
+		if (anguloBrazo1 >= 60) {
+			ladoBrazo1 = -1;
+		}
+
+		if (anguloBrazo1 <= 0) {
+			ladoBrazo1 = 1;
+		}
+
+		glTranslated(0, 6.5, 0);
+		glRotated(anguloBrazo1, 1, 0, 0);
+		glTranslated(0, -6.5, 0);
+
+		brazo1();
+	glPopMatrix();
+
+
+
+
+	glPushMatrix();
+		anguloBrazo2 += (velocidadMovimiento * ladoBrazo2);
+		
+		if (anguloBrazo2 <= -60) {
+			ladoBrazo2 = 1;
+		}
+
+		if (anguloBrazo2 >= 0) {
+			ladoBrazo2 = -1;
+		}
+
+		glTranslated(0, 6.5, 0);
+		glRotated(anguloBrazo2, 1, 0, 0);
+		glTranslated(0, -6.5, 0);
+		brazo2();
+	glPopMatrix();
+
+
+
+
+	glPushMatrix();
+		cabeza();
+	glPopMatrix();
+
+
+}
+
+
+float desplazamiento = -50;
+
+void dibujoGeneral() {
 	//cuadro();
 	goku();
 	goku2();
@@ -378,34 +507,12 @@ void personaje() {
 	pared4();
 	//paisaje();
 
-
-	// SEMANA 7 
-
-	glTranslated(0, 1, 0);
-
 	glPushMatrix();
-		pierna1();
+		desplazamiento += 0.1;
+		glTranslated(0, 0, desplazamiento);
+		personaje();
 	glPopMatrix();
 
-	glPushMatrix();
-		pierna2();
-	glPopMatrix();
-
-	glPushMatrix();
-		cuerpo();
-	glPopMatrix();
-
-	glPushMatrix();
-		brazo1();
-	glPopMatrix();
-
-	glPushMatrix();
-		brazo2();
-	glPopMatrix();
-
-	glPushMatrix();
-		cabeza();
-	glPopMatrix();
 }
 
 // FIN DIBUJO 
@@ -417,16 +524,19 @@ void dibujar() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(camaraX, camaraY, camaraZ, 0, 0, 0, 0, 1, 0);
+	gluLookAt(camaraX, camaraY, camaraZ, centroX, 0, centroZ, 0, 1, 0);
+	//glClearColor(0, 1, 0, 1); // fondo verde
 
 	glPushMatrix();
-	glRotated(angulo, 0, 1, 0);
-	dibujarEjes();
-	//piso();
+		glRotated(angulo, 0, 1, 0);
+		dibujarEjes();
+		//piso();
 
-	personaje();
+		dibujoGeneral();
 
 	glPopMatrix();
+
+
 	glutSwapBuffers();
 }
 
@@ -450,31 +560,40 @@ void teclado_especial(int tecla, int x, int y) {
 	}
 }
 
-void teclado(unsigned char key, int x, int y) {
-	switch (key)
-	{
-	case 101:
-		camaraY += 0.3;
-		break;
-	case 103:
-		camaraY -= 0.3;
-		break;
 
-	case 100:
-		angulo -= 3;
+void teclado(unsigned char key, int x, int y) {
+	
+	switch (key) {
+	case 'o':
+		camaraZ -= 1;
 		break;
-	case 102:
-		angulo += 3;
+	case 'p':
+		camaraZ += 1;
+		break;
+	case 'a':
+		camaraX -= movimientoCamara;
+		centroX -= movimientoCamara;
+		break;
+	case 'd':
+		camaraX += movimientoCamara;
+		centroX += movimientoCamara;
+		break;
+	case 'w':
+		camaraZ -= movimientoCamara;
+		centroZ -= movimientoCamara;
+		break;
+	case 's':
+		camaraZ += movimientoCamara;
+		centroZ += movimientoCamara;
 		break;
 	}
 }
+
 
 void timer(int t) {
 	glutPostRedisplay();
 	glutTimerFunc(20, timer, 0);
 }
-
-
 
 int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
@@ -485,6 +604,7 @@ int main(int argc, char* argv[]) {
 	cargarImagenes();
 	glutReshapeFunc(iniciarVentana);
 	glutDisplayFunc(dibujar);
+	glutKeyboardFunc(teclado);
 	//glutKeyboardFunc(teclado);
 	glutSpecialFunc(teclado_especial);
 	glutTimerFunc(0, timer, 0);
@@ -493,3 +613,4 @@ int main(int argc, char* argv[]) {
 }
 
 
+*/

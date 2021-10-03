@@ -2,7 +2,7 @@
 #include <iostream>
 #include "texturas/RgbImage.h"
 
-
+/* 
 using namespace std;
 
 float camaraX = -20;
@@ -811,7 +811,7 @@ void timerSubirHelicoptero(int) {
 void timerHelice(int t) {
 	velHelice += 1;
 
-	if (velHelice < 15) {
+	if (velHelice < 5) {
 		glutTimerFunc(3000, timerHelice, 0);
 	}
 	else {
@@ -840,3 +840,4 @@ int main(int argc, char* argv[]) {
 }
 
 
+*/
